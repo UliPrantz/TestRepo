@@ -57,14 +57,14 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Container(
           alignment: Alignment.center,
           child: FlatButton(
-            child: Text("jlakdsjflkjasdlkfjlasdjflkj"),
+            child: Text("Press to add FirstTestEvent()"),
             onPressed: () {
               widget.myTestBloc.add(FirstTestEvent());
             },
           ),
         ),
         listener: (context, state) {
-          print(state);
+          print("Inside the state function. State is: $state");
         },
       ),
     );
