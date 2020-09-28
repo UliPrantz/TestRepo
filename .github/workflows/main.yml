@@ -25,7 +25,7 @@ jobs:
           TARGET_FILE_PATH: ${{ secrets.TARGET_FILE_PATH }}
         run: |
           mkdir ~/.ssh
-          echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsaa
+          echo $SSH_PRIVATE_KEY | tr " " "\n" > ~/.ssh/id_rsaa
           chmod 600 ~/.ssh/id_rsaa
-          #scp -o StrictHostKeychecking=no -r $SOURCE_FILE_PATH $USERNAME@$HOST:$TARGET_FILE_PATH
+          scp -o StrictHostKeychecking=no -r $SOURCE_FILE_PATH $USERNAME@$HOST:$TARGET_FILE_PATH
       - uses: mxschmitt/action-tmate@v3
