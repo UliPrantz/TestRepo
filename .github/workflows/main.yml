@@ -20,6 +20,7 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSHKEY }}
+          known_hosts: ""
       - name: Set up secret file and run scp
         env:
           SOURCE_FILE_PATH: ${{ secrets.SOURCE_FILE_PATH }}
