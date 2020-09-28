@@ -26,4 +26,5 @@ jobs:
         run: |
           mkdir ~/.ssh
           echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
           scp -o StrictHostKeychecking=no -r $SOURCE_FILE_PATH $USERNAME@$HOST:$TARGET_FILE_PATH
