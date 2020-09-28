@@ -20,16 +20,10 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSHKEY }}
           SOURCE_FILE_PATH: ${{ secrets.SOURCE_FILE_PATH }}
-          TARGET_FILE_PATH: ${{ secrets.TARGET_FILE_PATH }}
           USERNAME: ${{ secrets.USERNAME }}
+          HOST: ${{ secrets.HOST }}
+          TARGET_FILE_PATH: ${{ secrets.TARGET_FILE_PATH }}
         run: |
           mkdir ~/.ssh
-          #echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
-          
-      - name: Set up secret file and run scpr
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSHKEY }}
-          SOURCE_FILE_PATH: ${{ secrets.SOURCE_FILE_PATH }}
-          TARGET_FILE_PATH: ${{ secrets.TARGET_FILE_PATH }}
-          USERNAME: ${{ secrets.USERNAME }}
-        uses: mxschmitt/action-tmate@v3  
+          echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
+          scp -o StrictHostKeychecking=no -r $SOURCE_FILE_PATH $USERNAME@$HOST:$TARGET_FILE_PATH
