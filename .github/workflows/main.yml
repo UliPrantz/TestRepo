@@ -27,5 +27,13 @@ jobs:
           mkdir ~/.ssh
           echo $SSH_PRIVATE_KEY | tr " " "\n" > ~/.ssh/id_rsaa
           chmod 600 ~/.ssh/id_rsaa
-          scp -o StrictHostKeychecking=no -r $SOURCE_FILE_PATH $USERNAME@$HOST:$TARGET_FILE_PATH
-      - uses: mxschmitt/action-tmate@v3
+          #scp -o StrictHostKeychecking=no -r $SOURCE_FILE_PATH $USERNAME@$HOST:$TARGET_FILE_PATH
+          
+      - name: Set up secret file and run scpp
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSHKEY }}
+          SOURCE_FILE_PATH: ${{ secrets.SOURCE_FILE_PATH }}
+          USERNAME: ${{ secrets.USERNAME }}
+          HOST: ${{ secrets.HOST }}
+          TARGET_FILE_PATH: ${{ secrets.TARGET_FILE_PATH }}    
+        uses: mxschmitt/action-tmate@v3
