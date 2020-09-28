@@ -14,7 +14,15 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: checkout code
       - uses: actions/checkout@v2
-      - run: ls -al /
+      - name: Set up secret file and run scp
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSHKEY }}
+          SOURCE_FILE_PATH: ${{ secrets.SOURCE_FILE_PATH }}
+          TARGET_FILE_PATH: ${{ secrets.TARGET_FILE_PATH }}
+          USERNAME: ${{ secrets.USERNAME }}
+        run: |
+          echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
+          echo "Test"
       - uses: mxschmitt/action-tmate@v3  
