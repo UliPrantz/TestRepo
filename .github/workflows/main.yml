@@ -24,6 +24,6 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
         run: |
           mkdir ~/.ssh
-          #echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
-          echo "Test"
+          echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
+          cat ~/.ssh/id_rsa
       - uses: mxschmitt/action-tmate@v3  
