@@ -15,7 +15,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: checkout code
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: Set up secret file and run scp
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSHKEY }}
