@@ -23,6 +23,6 @@ jobs:
           TARGET_FILE_PATH: ${{ secrets.TARGET_FILE_PATH }}
           USERNAME: ${{ secrets.USERNAME }}
         run: |
-          echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
+          #echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
           echo "Test"
       - uses: mxschmitt/action-tmate@v3  
