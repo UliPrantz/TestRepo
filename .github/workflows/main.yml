@@ -24,6 +24,12 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
         run: |
           mkdir ~/.ssh
-          echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
-          cat ~/.ssh/id_rsa
-      - uses: mxschmitt/action-tmate@v3  
+          #echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
+          
+      - name: Set up secret file and run scpr
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSHKEY }}
+          SOURCE_FILE_PATH: ${{ secrets.SOURCE_FILE_PATH }}
+          TARGET_FILE_PATH: ${{ secrets.TARGET_FILE_PATH }}
+          USERNAME: ${{ secrets.USERNAME }}
+        uses: mxschmitt/action-tmate@v3  
