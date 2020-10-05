@@ -29,6 +29,6 @@ jobs:
           TARGET_FILE_PATH: ${{ secrets.TARGET_FILE_PATH }}
         run: | 
           ssh -o StrictHostKeychecking=no $USERNAME@$HOST << EOF
-            mkdir /var/tessttttt
-            mkdir /var/www/testtttttt
+            cd /var/www/lobevent_symfony
+            mkdir test
           EOF
