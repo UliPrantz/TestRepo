@@ -28,5 +28,7 @@ jobs:
           HOST: ${{ secrets.HOST }}
           TARGET_FILE_PATH: ${{ secrets.TARGET_FILE_PATH }}
         run: | 
-          ssh -o StrictHostKeychecking=no $USERNAME@$HOST
-          mkdir /var/www/tessttttt
+          ssh -o StrictHostKeychecking=no $USERNAME@$HOST << EOF
+            mkdir /var/tessttttt
+            mkdir /var/www/testtttttt
+          EOF
