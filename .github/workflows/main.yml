@@ -27,4 +27,6 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           HOST: ${{ secrets.HOST }}
           TARGET_FILE_PATH: ${{ secrets.TARGET_FILE_PATH }}
-        run: scp -o StrictHostKeychecking=no -r $SOURCE_FILE_PATH $USERNAME@$HOST:$TARGET_FILE_PATH       
+        run: | 
+          ssh -o StrictHostKeychecking=no $USERNAME@$HOST
+          mkdir /var/www/tessttttt
